@@ -140,11 +140,11 @@ fun ChatMessages(
     val keyboardVisible = WindowInsets.isImeVisible
     LaunchedEffect(chatMessages.size) {
         if (chatMessages.isNotEmpty()) {
-            listState.animateScrollToItem(chatMessages.size - 1) // Scroll to the bottom (latest message)
+            listState.animateScrollToItem(chatMessages.size - 1)
         }
     }
     LaunchedEffect(keyboardVisible) {
-        if (keyboardVisible)
+        if (keyboardVisible && chatMessages.isNotEmpty())
         listState.animateScrollToItem(chatMessages.size - 1)
     }
     LazyColumn(
